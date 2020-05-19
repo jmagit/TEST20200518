@@ -9,13 +9,23 @@ using System.Threading.Tasks;
 namespace Demos.Tests {
     [TestClass()]
     public class CalcTests {
+        public TestContext TestContext { get; set; }
+
         Calc calc;
 
         [TestInitialize]
         public void TestInitialize() {
             calc = new Calc();
         }
+
+        [TestCleanup]
+        public void TestCleanup() {
+            var nom = TestContext.TestName;
+
+        }
         [TestMethod()]
+        [TestCategory("Humo")]
+        [Priority(1)]
         public void sumaTest() {
             var obj = new Calc();
             Assert.AreEqual(4, obj.suma(2, 2));
@@ -23,7 +33,9 @@ namespace Demos.Tests {
         }
 
         [TestMethod()]
-        [Timeout(1)]
+        [TestCategory("Humo")]
+        [Priority(2)]
+        //[Timeout(1)]
         public void Multiplica() {
             var rslt = calc.multiplica(2, 3);
             Assert.IsNotNull(rslt);
@@ -32,16 +44,18 @@ namespace Demos.Tests {
             Assert.IsTrue(rslt <= 6, "Mayor 6");
             // calc.divide(2, 0);
             // Assert.Fail("Por todas estas cosas");
-            Assert.Inconclusive("Que me queda por hacer.");
+            // Assert.Inconclusive("Que me queda por hacer.");
 
         }
 
         [TestMethod()]
-        [Ignore]
+        [TestCategory("Excepcion")]
+        //[Ignore]
         [ExpectedException(typeof(DivideByZeroException))]
+        [Priority(3)]
         public void divideTest() {
             var obj = new Calc();
-            Assert.AreEqual(2, obj.divide(2, 1));
+            Assert.AreEqual(2, obj.divide(2, 0));
         }
     }
 }
