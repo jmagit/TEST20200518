@@ -12,7 +12,7 @@ namespace Demos.Tests {
         Calc calc;
 
         [TestInitialize]
-        void TestInitialize() {
+        public void TestInitialize() {
             calc = new Calc();
         }
         [TestMethod()]
@@ -23,6 +23,21 @@ namespace Demos.Tests {
         }
 
         [TestMethod()]
+        [Timeout(1)]
+        public void Multiplica() {
+            var rslt = calc.multiplica(2, 3);
+            Assert.IsNotNull(rslt);
+            Assert.AreEqual(6, rslt);
+            Assert.IsTrue(1 < rslt, "Menor 1");
+            Assert.IsTrue(rslt <= 6, "Mayor 6");
+            // calc.divide(2, 0);
+            // Assert.Fail("Por todas estas cosas");
+            Assert.Inconclusive("Que me queda por hacer.");
+
+        }
+
+        [TestMethod()]
+        [Ignore]
         [ExpectedException(typeof(DivideByZeroException))]
         public void divideTest() {
             var obj = new Calc();
