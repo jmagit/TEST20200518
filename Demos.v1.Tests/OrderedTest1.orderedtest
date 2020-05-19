@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<OrderedTest name="orderedtest1" storage="d:\cursos\dotnet\mstest20200518\demos.v1.tests\orderedtest1.orderedtest" id="cb131417-cdb8-4646-a779-65e932bb9302" continueAfterFailure="true" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <TestLinks>
+    <TestLink id="cf576e3c-7bdc-f91f-7117-686c4e07abd9" name="sumaTest" storage="bin\debug\demos.v1.tests.dll" type="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestElement, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.ObjectModel,   PublicKeyToken=b03f5f7f11d50a3a" />
+    <TestLink id="35f28b34-18bb-0e01-b3fb-443b95b06108" name="sumaTest1" storage="bin\debug\demos.v1.tests.dll" type="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestElement, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.ObjectModel,   PublicKeyToken=b03f5f7f11d50a3a" />
+    <TestLink id="9a720dc0-ef51-cf7f-8aeb-e8c9ba125eb2" name="multiplicaTest" storage="bin\debug\demos.v1.tests.dll" type="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestElement, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.ObjectModel,   PublicKeyToken=b03f5f7f11d50a3a" />
+  </TestLinks>
+</OrderedTest>
