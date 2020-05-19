@@ -16,16 +16,17 @@ namespace Domain.Entities {
         public Articulo(IProducto producto, int cantidad, double descuento) {
             this.producto = producto ?? throw new CompraException("El producto es obligatorio");
             this.precio = producto.Precio;
-            this.cantidad = cantidad;
+            this.Cantidad = cantidad;
             this.delta = descuento;
         }
 
 
-        public IProducto Producto { get => producto; }
+        public IProducto Producto { get => (IProducto)producto.Clone(); }
 
         public int Cantidad {
             get => cantidad;
             set {
+                if (value < 1) throw new CompraException("no acepta menos de 1");
                 cantidad = value;
             }
         }

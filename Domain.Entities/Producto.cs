@@ -18,7 +18,7 @@ namespace Domain.Entities {
         private Estado estado;
 
         public Producto(int idProducto, String nombre, double precio, Estado estado = Estado.ConStock) {
-            this.idProducto = idProducto;
+            this.IdProducto = idProducto;
             this.nombre = nombre;
             this.precio = precio;
             this.estado = estado;
@@ -27,6 +27,7 @@ namespace Domain.Entities {
         public int IdProducto {
             get => idProducto;
             set {
+                if (value < 0) throw new CompraException("no acepta id negativo");
                 idProducto = value;
             }
         }

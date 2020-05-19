@@ -22,6 +22,7 @@ namespace Domain.Entities.Tests {
         [TestMethod()]
         public void ArticuloKOTest() {
             var prod = new Producto(1, "Uno", 10);
+
             Assert.ThrowsException<CompraException>(() => new Articulo(null));
             Assert.ThrowsException<CompraException>(() => new Articulo(prod, -1));
         }

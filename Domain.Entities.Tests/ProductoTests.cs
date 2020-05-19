@@ -58,6 +58,15 @@ namespace Domain.Entities.Tests {
             obj.Recatalogar(10);
             Assert.ThrowsException<CompraException>(() => obj.Recatalogar(10));
         }
+        [TestMethod()]
+        [ExpectedException(typeof(CompraException))]
+        public void DescatalogarKO2Test() {
+            var obj = new Producto(1, "Uno", 10, Estado.SinStock);
+            obj.Descatalogar();
+            obj.Descatalogar();
+            obj.Recatalogar(10);
+            obj.Recatalogar(10);
+        }
 
         [TestMethod()]
         public void RecatalogarTest() {

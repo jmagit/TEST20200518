@@ -20,16 +20,17 @@ namespace Domain.Entities.Tests {
             Assert.AreEqual(120, obj.ImporteSinDescuento);
             Assert.AreEqual(0, obj.ImporteDescuento);
             Assert.AreEqual(120, obj.Total);
-            var art = new Articulo(new Producto(1, "Uno", 10), 5);
+            var art = new Articulo(new Producto(4, "Cuatro", 10), 5);
             art.SetRegalo();
             obj.Add(art);
             Assert.AreEqual(4, obj.NumeroLineas);
             Assert.AreEqual(120, obj.Total);
             art.Descuento = 0.10;
             Assert.AreEqual(5, obj.ImporteDescuento);
+            Assert.AreEqual("Cuatro", obj.Articulos[3].Producto.Nombre);
             obj.Articulos[3].SetRegalo();
             Assert.AreEqual(5, obj.ImporteDescuento);
-
+            art.Producto.Precio = 0;
         }
 
         [TestMethod()]
