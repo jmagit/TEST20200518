@@ -61,6 +61,9 @@ namespace Calculadora.ViewModel.Tests {
         [TestMethod]
         public void DivideTest() {
             OperacionHelper(25, '/', 10, 2.5);
+        }
+        [TestMethod]
+        public void DivideByCeroTest() {
             OperacionHelper(5, '/', 0, double.PositiveInfinity);
         }
 
