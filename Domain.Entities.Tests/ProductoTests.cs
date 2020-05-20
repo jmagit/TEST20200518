@@ -12,11 +12,21 @@ namespace Domain.Entities.Tests {
         [TestMethod()]
         public void ProductoOKTest() {
             var obj = new Producto(1, "Uno", 10);
+            //var obj = new Producto(11, "Unox", 101);
             Assert.IsNotNull(obj);
-            Assert.AreEqual(1, obj.IdProducto);
-            Assert.AreEqual("Uno", obj.Nombre);
-            Assert.AreEqual(10, obj.Precio);
-            Assert.AreEqual(Estado.ConStock, obj.Estado);
+            //Assert.AreEqual(1, obj.IdProducto, "IdProducto");
+            //if (obj.IdProducto != 1) throw new AssertFailedException("...");
+            //Assert.AreEqual("Uno", obj.Nombre);
+            //Assert.AreEqual(10, obj.Precio);
+            //Assert.AreEqual(Estado.ConStock, obj.Estado);
+
+            string msgErr = "";
+            if (obj.IdProducto != 1) msgErr += "Id ";
+            if (obj.Nombre != "Uno") msgErr += "Nombre ";
+            if (obj.Precio != 10) msgErr += "Precio ";
+            if (obj.Estado != Estado.ConStock) msgErr += "Estado ";
+            if (msgErr != "") Assert.Fail($"Propiedades fallidas: {msgErr}");
+
         }
 
         [TestMethod()]
