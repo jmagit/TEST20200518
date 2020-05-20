@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Reflection;
 
 namespace Calculadora.ViewModel.Tests {
     [TestClass()]
@@ -31,11 +32,14 @@ namespace Calculadora.ViewModel.Tests {
             }
             Assert.AreEqual(numero, calc.Pantalla);
         }
+        private void PonNumero(double numero) {
+            PonNumero(numero.ToString());
+        }
 
         private void OperacionHelper(double operando1, char operacion, double operando2, double expect) {
-            PonNumero(operando1.ToString());
+            PonNumero(operando1);
             calc.Operar.Execute(operacion);
-            PonNumero(operando2.ToString());
+            PonNumero(operando2);
             calc.Operar.Execute("=");
             Assert.AreEqual(expect.ToString(), calc.Pantalla);
         }
@@ -58,6 +62,32 @@ namespace Calculadora.ViewModel.Tests {
         public void DivideTest() {
             OperacionHelper(25, '/', 10, 2.5);
             OperacionHelper(5, '/', 0, double.PositiveInfinity);
+        }
+
+
+        private static object ExecuteMethod(Object arrange, string metodo, object[] parametros) {
+            MethodInfo privado = arrange.GetType().GetMethod(metodo,
+                BindingFlags.NonPublic | BindingFlags.Instance);
+            return privado.Invoke(arrange, parametros);
+        }
+
+        private void Calcula(string nuevaOp) {
+            ExecuteMethod(calc, "Calcula", new object[] { nuevaOp });
+        }
+
+        [TestMethod]
+        public void CalculaTest() {
+            Assert.AreEqual("0", calc.Pantalla);
+            PonNumero(2);
+            Calcula("+");
+            Assert.AreEqual("2", calc.Pantalla);
+            PonNumero(3);
+            Calcula("*");
+            Assert.AreEqual("5", calc.Pantalla);
+            PonNumero(3);
+            Assert.AreEqual("3", calc.Pantalla);
+            Calcula("=");
+            Assert.AreEqual("15", calc.Pantalla);
         }
     }
 }
