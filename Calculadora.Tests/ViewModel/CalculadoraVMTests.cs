@@ -27,19 +27,19 @@ namespace Calculadora.ViewModel.Tests {
         }
 
         private void PonNumero(string numero) {
-            foreach(var c in numero) {
-                switch(c) {
+            foreach (var c in numero) {
+                switch (c) {
                     case ',':
-                    calc.AñadirComaDecimal.Execute();
+                        calc.AñadirComaDecimal.Execute();
                         break;
                     case '-':
                         break;
                     default:
-                    calc.AñadirDigito.Execute(c);
+                        calc.AñadirDigito.Execute(c);
                         break;
                 }
             }
-            if (numero[0] == '-') calc.CambiarSigno.Execute(); 
+            if (numero[0] == '-') calc.CambiarSigno.Execute();
             Assert.AreEqual(numero, calc.Pantalla);
         }
         private void PonNumero(double numero) {
