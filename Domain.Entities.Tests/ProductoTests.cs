@@ -20,13 +20,13 @@ namespace Domain.Entities.Tests {
         }
 
         [TestMethod()]
-        [ExpectedException(typeof(CompraException))]
+        // [ExpectedException(typeof(CompraException))]
         public void ProductoKOTest() {
             Producto obj;
-            obj = new Producto(-1, null, 10);
-            obj = new Producto(1, null, 10);
-            obj = new Producto(1, "", 10);
-            obj = new Producto(1, "xxx", 0);
+            Assert.ThrowsException<CompraException>(() => obj = new Producto(-1, null, 10), "Id negativo");
+            Assert.ThrowsException<CompraException>(() => obj = new Producto(1, null, 10), "Nombre nulo");
+            Assert.ThrowsException<CompraException>(() => obj = new Producto(1, "", 10), "Nombre en blanco");
+            Assert.ThrowsException<CompraException>(() => obj = new Producto(1, "xxx", 0), "Precio 0");
         }
 
         [TestMethod()]
@@ -64,7 +64,7 @@ namespace Domain.Entities.Tests {
             var obj = new Producto(1, "Uno", 10, Estado.SinStock);
             obj.Descatalogar();
             obj.Descatalogar();
-            obj.Recatalogar(10);
+            obj.Recatalogar(10); // Mal, no se ejecuta
             obj.Recatalogar(10);
         }
 
@@ -78,6 +78,7 @@ namespace Domain.Entities.Tests {
             var obj = new Producto(1, "Uno", 10);
             Assert.IsTrue(obj.Equals(new Producto(1, "Uno", 10)));
             Assert.IsFalse(obj.Equals(new Producto(2, "Uno", 10)));
+            Assert.IsFalse(obj.Equals(null));
         }
 
         [TestMethod()]
