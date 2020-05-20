@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<GenericTest name="Externa" storage="d:\cursos\dotnet\mstest20200518\demos.tests\externa.generictest" id="3f90a568-2065-4379-885b-80edc2fc4444" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Command filename="D:\Cursos\dotnet\MSTEST20200518\PruebaExterna\bin\Debug\PruebaExterna.exe" workingDirectory="%TestOutputDirectory%" />
+  <SummaryXmlFile path="%TestOutputDirectory%\&lt;Escriba aquí el nombre del archivo de resumen&gt;" />
+</GenericTest>

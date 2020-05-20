@@ -57,5 +57,19 @@ namespace Demos.Tests {
             var obj = new Calc();
             Assert.AreEqual(2, obj.divide(2, 0));
         }
+
+
+        public void AreaTestHelper(double radio, double expected) {
+            var arrange = new Calc();
+            Assert.AreEqual(expected, Math.Round(arrange.Area(radio), 4));
+        }
+
+        [TestMethod]
+        [DataSource("Microsoft.VisualStudio.TestTools.DataSource.CSV",
+            "|DataDirectory|\\AreaTest.csv", "AreaTest#csv", DataAccessMethod.Sequential)]
+        public void AreaTest() {
+            AreaTestHelper(double.Parse(TestContext.DataRow[0].ToString()),
+                double.Parse(TestContext.DataRow["area"].ToString()));
+        }
     }
 }

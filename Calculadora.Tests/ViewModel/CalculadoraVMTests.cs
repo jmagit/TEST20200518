@@ -28,8 +28,18 @@ namespace Calculadora.ViewModel.Tests {
 
         private void PonNumero(string numero) {
             foreach(var c in numero) {
-                calc.AñadirDigito.Execute(c);
+                switch(c) {
+                    case ',':
+                    calc.AñadirComaDecimal.Execute();
+                        break;
+                    case '-':
+                        break;
+                    default:
+                    calc.AñadirDigito.Execute(c);
+                        break;
+                }
             }
+            if (numero[0] == '-') calc.CambiarSigno.Execute(); 
             Assert.AreEqual(numero, calc.Pantalla);
         }
         private void PonNumero(double numero) {
@@ -43,6 +53,21 @@ namespace Calculadora.ViewModel.Tests {
             calc.Operar.Execute("=");
             Assert.AreEqual(expect.ToString(), calc.Pantalla);
         }
+
+        public TestContext TestContext { get; set; }
+
+        [TestMethod]
+        [DataSource("Microsoft.VisualStudio.TestTools.DataSource.CSV",
+            "|DataDirectory|\\operaciones.csv", "operaciones#csv", DataAccessMethod.Sequential)]
+        public void OperacionTest() {
+            OperacionHelper(
+                double.Parse(TestContext.DataRow[0].ToString()),
+                TestContext.DataRow["operacion"].ToString()[0],
+                double.Parse(TestContext.DataRow["operando2"].ToString()),
+                double.Parse(TestContext.DataRow["resultado"].ToString()));
+
+        }
+
         [TestMethod]
         public void SumaTest() {
             OperacionHelper(2, '+', 2, 4);

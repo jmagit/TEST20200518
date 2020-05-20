@@ -17,5 +17,7 @@ namespace Demos {
                 throw new DivideByZeroException();
             return o1 / o2;
         }
+
+        public double Area(double radio) => 2 * Math.PI * radio;
     }
 }
