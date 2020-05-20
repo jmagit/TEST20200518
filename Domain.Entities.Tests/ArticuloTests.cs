@@ -5,20 +5,26 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Reflection;
 
 namespace Domain.Entities.Tests {
     [TestClass()]
     public class ArticuloTests {
         [TestMethod()]
         public void ArticuloOKTest() {
-            var prod = new Producto(1, "Uno", 10);
+            ArticuloOKTestHelper(new Producto(1, "Uno", 10), 1, 1, 0);
+            ArticuloOKTestHelper(new Producto(2, "Dos", 2), 2, 1, 0);
+        }
+
+        private static void ArticuloOKTestHelper(Producto prod, int IdProducto, int Cantidad, double Descuento) {
             var obj = new Articulo(prod);
             Assert.IsNotNull(obj);
-            Assert.AreEqual(1, obj.Producto.IdProducto);
-            Assert.AreEqual(1, obj.Cantidad);
+            Assert.AreEqual(IdProducto, obj.Producto.IdProducto);
+            Assert.AreEqual(Cantidad, obj.Cantidad);
             Assert.AreEqual(prod.Precio, obj.Precio);
-            Assert.AreEqual(0, obj.Descuento);
+            Assert.AreEqual(Descuento, obj.Descuento);
         }
+
         [TestMethod()]
         public void ArticuloKOTest() {
             var prod = new Producto(1, "Uno", 10);
@@ -79,6 +85,23 @@ namespace Domain.Entities.Tests {
         [TestMethod()]
         public void CloneTest() {
             Assert.Inconclusive();
+        }
+        [TestMethod()]
+        public void IsProcentajeTest() {
+            var arrange = new Articulo(new Producto(1, "Uno", 10), 5);
+            bool rslt = (bool)ExecuteMethod(arrange, "IsProcentaje", new object[] { 10 });
+            Assert.IsTrue(rslt);
+            Assert.IsFalse((bool)ExecuteMethod(arrange, "IsProcentaje", new object[] { 110 }));
+            Assert.IsFalse(IsProcentaje(arrange, -15));
+        }
+
+        private bool IsProcentaje(Articulo target, double value) {
+            return (bool)ExecuteMethod(target, "IsProcentaje", new object[] { value });
+        }
+        private static object ExecuteMethod(Object arrange, string metodo, object[] parametros) {
+            MethodInfo privado = arrange.GetType().GetMethod(metodo,
+                BindingFlags.NonPublic | BindingFlags.Instance);
+            return privado.Invoke(arrange, parametros);
         }
     }
 }

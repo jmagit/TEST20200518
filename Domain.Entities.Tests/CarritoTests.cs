@@ -11,10 +11,7 @@ namespace Domain.Entities.Tests {
     public class CarritoTests {
         [TestMethod()]
         public void ImportesTest() {
-            var obj = new Carrito();
-            obj.Add(new Producto(1, "Uno", 2), 10);
-            obj.Add(new Producto(2, "Dos", 10), 5);
-            obj.Add(new Producto(3, "Tres", 5), 10);
+            Carrito obj = Carrito3Articulos();
             Assert.AreEqual(3, obj.Articulos.Count);
             Assert.AreEqual(3, obj.NumeroLineas);
             Assert.AreEqual(120, obj.ImporteSinDescuento);
@@ -33,8 +30,18 @@ namespace Domain.Entities.Tests {
             art.Producto.Precio = 0;
         }
 
+        private static Carrito Carrito3Articulos() {
+            var obj = new Carrito();
+            obj.Add(new Producto(1, "Uno", 2), 10);
+            obj.Add(new Producto(2, "Dos", 10), 5);
+            obj.Add(new Producto(3, "Tres", 5), 10);
+            return obj;
+        }
+
         [TestMethod()]
         public void AddArticuloTest() {
+            Carrito obj = Carrito3Articulos();
+
             Assert.Inconclusive();
         }
 
