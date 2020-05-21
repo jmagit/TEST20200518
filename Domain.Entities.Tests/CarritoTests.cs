@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Domain.Core;
+using Domain.Services;
 
 namespace Domain.Entities.Tests {
     [TestClass()]
@@ -123,13 +125,23 @@ namespace Domain.Entities.Tests {
         [TestMethod]
         public void TotalShimTest() {
             using (Microsoft.QualityTools.Testing.Fakes.ShimsContext.Create()) {
-                Domain.Entities.Fakes.ShimCarrito.AllInstances.ImporteDescuentoGet = (arg) => 10;
-                Domain.Entities.Fakes.ShimCarrito.AllInstances.ImporteSinDescuentoGet = (arg) => 100;
+                Fakes.ShimCarrito.AllInstances.ImporteDescuentoGet = (arg) => 10;
+                Fakes.ShimCarrito.AllInstances.ImporteSinDescuentoGet = (arg) => 100;
                 var arrage = new Carrito();
                 var rslt = arrage.Total;
                 Assert.AreEqual(90, rslt);
             }
         }
 
+        [TestMethod]
+        public void GuardarTest() {
+            IRepository<Carrito> repository = new Core.Fakes.StubIRepository<Carrito>() {
+                AddT0 = (Carrito item) => item.IdCarrito = 1
+            };
+            CarritoDomainService srv = new CarritoDomainService(repository);
+            Carrito carrito = Carrito3Articulos();
+            srv.HacerPedido(carrito);
+            Assert.AreEqual(1, carrito.IdCarrito);
+        }
     }
 }
