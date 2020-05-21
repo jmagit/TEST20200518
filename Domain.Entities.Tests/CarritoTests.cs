@@ -94,6 +94,12 @@ namespace Domain.Entities.Tests {
                 ImporteSinDescuentoGet = () => importeSinDescuento
             };
         }
+        private static IArticulo NewArticuloStubs2(double importeSinDescuento, double importeDescuento) {
+            var mock = new Mock<IArticulo>();
+            mock.Setup(o => o.ImporteDescuento).Returns(importeDescuento);
+            mock.Setup(o => o.ImporteSinDescuento).Returns(importeSinDescuento);
+            return mock.Object;
+        }
 
         private static Carrito Carrito3ArticulosStubs() {
             var obj = new Carrito();
@@ -104,12 +110,6 @@ namespace Domain.Entities.Tests {
             return obj;
         }
 
-        private static IArticulo NewArticuloStubs2(double importeSinDescuento, double importeDescuento) {
-            var mock = new Mock<IArticulo>();
-            mock.Setup(o => o.ImporteDescuento).Returns(importeDescuento);
-            mock.Setup(o => o.ImporteSinDescuento).Returns(importeSinDescuento);
-            return mock.Object;
-        }
 
         [TestMethod]
         public void ImporteSinDescuentoTest() {
