@@ -84,5 +84,52 @@ namespace Domain.Entities.Tests {
         public void CalculaRecargoTest() {
             Assert.Inconclusive();
         }
+
+        private static IArticulo NewArticuloStubs(double importeSinDescuento, double importeDescuento) {
+            return new Fakes.StubIArticulo() {
+                ImporteDescuentoGet = () => importeDescuento,
+                ImporteSinDescuentoGet = () => importeSinDescuento
+            };
+        }
+
+        private static Carrito Carrito3ArticulosStubs() {
+            var obj = new Carrito();
+
+            obj.Add(NewArticuloStubs(10, 2));
+            obj.Add(NewArticuloStubs(5, 0));
+            obj.Add(NewArticuloStubs(15, 3));
+            return obj;
+        }
+
+        [TestMethod]
+        public void ImporteSinDescuentoTest() {
+            var arrage = Carrito3ArticulosStubs();
+            var rslt = arrage.ImporteSinDescuento;
+            Assert.AreEqual(30, rslt);
+        }
+        [TestMethod]
+        public void ImporteDescuentoTest() {
+            var arrage = Carrito3ArticulosStubs();
+            var rslt = arrage.ImporteDescuento;
+            Assert.AreEqual(5, rslt);
+        }
+
+        [TestMethod]
+        public void TotalTest() {
+            var arrage = Carrito3ArticulosStubs();
+            var rslt = arrage.Total;
+            Assert.AreEqual(25, rslt);
+        }
+        [TestMethod]
+        public void TotalShimTest() {
+            using (Microsoft.QualityTools.Testing.Fakes.ShimsContext.Create()) {
+                Domain.Entities.Fakes.ShimCarrito.AllInstances.ImporteDescuentoGet = (arg) => 10;
+                Domain.Entities.Fakes.ShimCarrito.AllInstances.ImporteSinDescuentoGet = (arg) => 100;
+                var arrage = new Carrito();
+                var rslt = arrage.Total;
+                Assert.AreEqual(90, rslt);
+            }
+        }
+
     }
 }
