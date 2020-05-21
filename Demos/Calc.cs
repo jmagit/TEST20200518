@@ -5,8 +5,15 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Demos {
-    public class Calc {
-        public double suma(double o1, double o2) {
+    public interface ICalc {
+        double Area(double radio);
+        double divide(double o1, double o2);
+        double multiplica(double o1, double o2);
+        double suma(double o1, double o2);
+    }
+
+    public class Calc : ICalc {
+        public virtual double suma(double o1, double o2) {
             return o1 + o2;
         }
         public double multiplica(double o1, double o2) {
