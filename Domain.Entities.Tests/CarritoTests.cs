@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Domain.Core;
 using Domain.Services;
+using Moq;
 
 namespace Domain.Entities.Tests {
     [TestClass()]
@@ -103,6 +104,13 @@ namespace Domain.Entities.Tests {
             return obj;
         }
 
+        private static IArticulo NewArticuloStubs2(double importeSinDescuento, double importeDescuento) {
+            var mock = new Mock<IArticulo>();
+            mock.Setup(o => o.ImporteDescuento).Returns(importeDescuento);
+            mock.Setup(o => o.ImporteSinDescuento).Returns(importeSinDescuento);
+            return mock.Object;
+        }
+
         [TestMethod]
         public void ImporteSinDescuentoTest() {
             var arrage = Carrito3ArticulosStubs();
@@ -143,5 +151,32 @@ namespace Domain.Entities.Tests {
             srv.HacerPedido(carrito);
             Assert.AreEqual(1, carrito.IdCarrito);
         }
+        private static IArticulo NewArticuloMock(double importeSinDescuento, double importeDescuento, List<Mock<IArticulo>> lst) {
+            var mock = new Mock<IArticulo>();
+            mock.Setup(o => o.ImporteDescuento).Returns(importeDescuento);
+            mock.Setup(o => o.ImporteSinDescuento).Returns(importeSinDescuento);
+            lst.Add(mock);
+            return mock.Object;
+        }
+
+        private static Carrito Carrito3ArticulosMock(List<Mock<IArticulo>> lst) {
+            var obj = new Carrito();
+            obj.Add(NewArticuloMock(10, 2, lst));
+            obj.Add(NewArticuloMock(5, 0, lst));
+            obj.Add(NewArticuloMock(15, 3, lst));
+            return obj;
+        }
+        [TestMethod]
+        public void ImporteSinDescuentoMoqTest() {
+            List<Mock<IArticulo>> lst = new List<Mock<IArticulo>>();
+            var arrage = Carrito3ArticulosMock(lst);
+            var rslt = arrage.ImporteSinDescuento;
+            Assert.AreEqual(30, rslt);
+            foreach(var mock in lst) {
+                mock.VerifyGet(o => o.ImporteSinDescuento);
+                //mock.VerifyGet(o => o.ImporteDescuento);
+            }
+        }
+
     }
 }
