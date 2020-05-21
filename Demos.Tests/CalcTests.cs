@@ -71,5 +71,15 @@ namespace Demos.Tests {
             AreaTestHelper(double.Parse(TestContext.DataRow[0].ToString()),
                 double.Parse(TestContext.DataRow["area"].ToString()));
         }
+
+        [TestMethod]
+        [DataRow(1, 6.2832)]
+        [DataRow(0, 0)]
+        [DataRow(0.5, 3.1416)]
+        public void AreaDataTest(double radio, double expected) {
+            var arrange = new Calc();
+            Assert.AreEqual(expected, Math.Round(arrange.Area(radio), 4));
+        }
+
     }
 }
