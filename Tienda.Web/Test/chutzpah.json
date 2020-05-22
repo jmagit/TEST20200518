@@ -1,0 +1,16 @@
+{
+	"Framework": "jasmine",
+	"References": [
+		{
+			"Path": "../Scripts/app",
+			"Include": "*.js",
+			"Excludes": [ "*.spec.js" ]
+		}
+	],
+	"Tests": [
+		{
+			"Path": "../test",
+			"Includes": [ "*.spec.js" ]
+		}
+	]
+}

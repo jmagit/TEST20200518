@@ -1,6 +1,7 @@
 ﻿using Domain.Core;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -37,6 +38,7 @@ namespace Domain.Entities {
 
 
 		public int AddCantidad(int index, int cantidad) {
+			Debug.Assert(0 <= index && index < articulos.Count);
 			return articulos[index].AddCantidad(cantidad);
 		}
 

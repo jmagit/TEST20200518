@@ -38,3 +38,4 @@ using System.Runtime.InteropServices;
 [assembly: InternalsVisibleTo("Domain.Entities.Explorables")]
 [assembly: InternalsVisibleTo("Domain.Entities.IntelliTest")]
 [assembly: InternalsVisibleTo("Domain.Entities.IntelliTest.v2")]
+[assembly: InternalsVisibleTo("Domain.Entities.IntelliTests")]

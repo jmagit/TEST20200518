@@ -1,0 +1,21 @@
+﻿Crear carpetas \test y \script\app
+Crear fichero \test\chutzpah.json
+{
+	"Framework": "jasmine",
+	"References": [
+		{
+			"Path": "../Scripts/app",
+			"Include": "*.js",
+			"Excludes": [ "*.spec.js" ]
+		}
+	],
+	"Tests": [
+		{
+			"Path": "../test",
+			"Includes": [ "*.spec.js" ]
+		}
+	]
+}
+
+
+Si fallan las dependencias, en Administrar paquetes NuGet: Añadir chutzpah y jasmine-js
