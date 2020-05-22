@@ -1,0 +1,253 @@
+{
+  "id": "89a23cc3-7028-4263-81c0-e26a51f2103a",
+  "version": "2.0",
+  "name": "Curso",
+  "url": "https://localhost:44390",
+  "tests": [{
+    "id": "febb34b3-603a-4862-8755-01b35042a3b0",
+    "name": "Login incorecto",
+    "commands": [{
+      "id": "e665c61c-9882-4822-9d99-3eea16df217b",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "23d2c969-ab52-430c-8d66-0a390b481878",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1936x1056",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "d548c8c1-de90-4c6f-b0c7-a7c1a9b40c36",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Acerca de",
+      "targets": [
+        ["linkText=Acerca de", "linkText"],
+        ["css=.nav:nth-child(1) > li:nth-child(2) > a", "css:finder"],
+        ["xpath=//a[contains(text(),'Acerca de')]", "xpath:link"],
+        ["xpath=//a[contains(@href, '/Home/About')]", "xpath:href"],
+        ["xpath=//li[2]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Acerca de')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "4f89e26a-24c7-4657-b099-66b050fe2329",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=h2",
+      "targets": [
+        ["css=h2", "css:finder"],
+        ["xpath=//h2", "xpath:position"],
+        ["xpath=//h2[contains(.,'About.')]", "xpath:innerText"]
+      ],
+      "value": "About."
+    }, {
+      "id": "e3faf546-dda9-41c3-9edb-6fb08c6171c2",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Contacto",
+      "targets": [
+        ["linkText=Contacto", "linkText"],
+        ["css=li:nth-child(3) > a", "css:finder"],
+        ["xpath=//a[contains(text(),'Contacto')]", "xpath:link"],
+        ["xpath=//a[contains(@href, '/Home/Contact')]", "xpath:href"],
+        ["xpath=//li[3]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Contacto')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "7a65fcd0-5a77-4984-8063-5652f9ee9f1b",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=h2",
+      "targets": [
+        ["css=h2", "css:finder"],
+        ["xpath=//h2", "xpath:position"],
+        ["xpath=//h2[contains(.,'Contact.')]", "xpath:innerText"]
+      ],
+      "value": "Contact."
+    }, {
+      "id": "34d549cd-1767-448e-80d1-656ba0fddf6f",
+      "comment": "",
+      "command": "click",
+      "target": "id=loginLink",
+      "targets": [
+        ["id=loginLink", "id"],
+        ["linkText=Iniciar sesión", "linkText"],
+        ["css=#loginLink", "css:finder"],
+        ["xpath=//a[contains(text(),'Iniciar sesión')]", "xpath:link"],
+        ["xpath=//a[@id='loginLink']", "xpath:attributes"],
+        ["xpath=//a[contains(@href, '/Account/Login')]", "xpath:href"],
+        ["xpath=//ul[2]/li[2]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Iniciar sesión')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "5c613c20-7201-4839-b4a1-1c3eef506281",
+      "comment": "",
+      "command": "click",
+      "target": "css=h2",
+      "targets": [
+        ["css=h2", "css:finder"],
+        ["xpath=//h2", "xpath:position"],
+        ["xpath=//h2[contains(.,'Iniciar sesión.')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "8761ee54-ea45-4c63-9c94-0838e3f85e36",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=h2",
+      "targets": [
+        ["css=h2", "css:finder"],
+        ["xpath=//h2", "xpath:position"],
+        ["xpath=//h2[contains(.,'Iniciar sesión.')]", "xpath:innerText"]
+      ],
+      "value": "Iniciar sesión."
+    }, {
+      "id": "ac61a7b1-67e4-439a-aeca-ba89ad1fcae8",
+      "comment": "",
+      "command": "click",
+      "target": "id=Email",
+      "targets": [
+        ["id=Email", "id"],
+        ["name=Email", "name"],
+        ["css=#Email", "css:finder"],
+        ["xpath=//input[@id='Email']", "xpath:attributes"],
+        ["xpath=//section[@id='loginForm']/form/div/div/input", "xpath:idRelative"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "c486bb8b-6565-4d4b-9f14-128bdb88c7e4",
+      "comment": "",
+      "command": "type",
+      "target": "id=Email",
+      "targets": [
+        ["id=Email", "id"],
+        ["name=Email", "name"],
+        ["css=#Email", "css:finder"],
+        ["xpath=//input[@id='Email']", "xpath:attributes"],
+        ["xpath=//section[@id='loginForm']/form/div/div/input", "xpath:idRelative"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": "kk"
+    }, {
+      "id": "18d18df6-6263-499b-9e47-e19382f8aa11",
+      "comment": "",
+      "command": "click",
+      "target": "css=.form-group:nth-child(4) > .col-md-10",
+      "targets": [
+        ["css=.form-group:nth-child(4) > .col-md-10", "css:finder"],
+        ["xpath=//section[@id='loginForm']/form/div/div", "xpath:idRelative"],
+        ["xpath=//form/div/div", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "f20fc7e1-695a-4643-84d1-579dbbbab154",
+      "comment": "",
+      "command": "verifyText",
+      "target": "id=Email-error",
+      "targets": [
+        ["id=Email-error", "id"],
+        ["css=#Email-error", "css:finder"],
+        ["xpath=//span[@id='Email-error']", "xpath:attributes"],
+        ["xpath=//section[@id='loginForm']/form/div/div/span/span", "xpath:idRelative"],
+        ["xpath=//span/span", "xpath:position"]
+      ],
+      "value": "El campo Correo electrónico no es una dirección de correo electrónico válida."
+    }, {
+      "id": "ae0309d5-4a2d-4594-a203-314168120fbc",
+      "comment": "",
+      "command": "click",
+      "target": "id=Email",
+      "targets": [
+        ["id=Email", "id"],
+        ["name=Email", "name"],
+        ["css=#Email", "css:finder"],
+        ["xpath=//input[@id='Email']", "xpath:attributes"],
+        ["xpath=//section[@id='loginForm']/form/div/div/input", "xpath:idRelative"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "3d37fc16-e8fd-40ca-9f21-19cd582da200",
+      "comment": "",
+      "command": "type",
+      "target": "id=Email",
+      "targets": [
+        ["id=Email", "id"],
+        ["name=Email", "name"],
+        ["css=#Email", "css:finder"],
+        ["xpath=//input[@id='Email']", "xpath:attributes"],
+        ["xpath=//section[@id='loginForm']/form/div/div/input", "xpath:idRelative"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": "kk@kk"
+    }, {
+      "id": "e5c7bc6b-7f3b-4351-b090-eb93a2606629",
+      "comment": "",
+      "command": "type",
+      "target": "id=Password",
+      "targets": [
+        ["id=Password", "id"],
+        ["name=Password", "name"],
+        ["css=#Password", "css:finder"],
+        ["xpath=//input[@id='Password']", "xpath:attributes"],
+        ["xpath=//section[@id='loginForm']/form/div[2]/div/input", "xpath:idRelative"],
+        ["xpath=//div[2]/div/input", "xpath:position"]
+      ],
+      "value": "dddd"
+    }, {
+      "id": "769eb23e-17fb-4768-ac32-b6959a049d0f",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn",
+      "targets": [
+        ["css=.btn", "css:finder"],
+        ["xpath=//input[@value='Iniciar sesión']", "xpath:attributes"],
+        ["xpath=//section[@id='loginForm']/form/div[4]/div/input", "xpath:idRelative"],
+        ["xpath=//div[4]/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "6792fd92-ea77-43a3-b12b-e3c9ed2793d4",
+      "comment": "",
+      "command": "click",
+      "target": "css=.form-horizontal",
+      "targets": [
+        ["css=.form-horizontal", "css:finder"],
+        ["xpath=//form[@action='/Account/Login']", "xpath:attributes"],
+        ["xpath=//section[@id='loginForm']/form", "xpath:idRelative"],
+        ["xpath=//form", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "10680a83-704f-4882-b6ae-07178616bb25",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=.validation-summary-errors li",
+      "targets": [
+        ["css=.validation-summary-errors li", "css:finder"],
+        ["xpath=//section[@id='loginForm']/form/div/ul/li", "xpath:idRelative"],
+        ["xpath=//form/div/ul/li", "xpath:position"],
+        ["xpath=//li[contains(.,'Intento de inicio de sesión no válido.')]", "xpath:innerText"]
+      ],
+      "value": "Intento de inicio de sesión no válido."
+    }]
+  }],
+  "suites": [{
+    "id": "800ec1d5-7ef0-423f-aeef-05a0208476b2",
+    "name": "Inicio de sesion",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": []
+  }],
+  "urls": ["https://localhost:44390/"],
+  "plugins": []
+}
